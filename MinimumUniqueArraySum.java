@@ -18,7 +18,6 @@ public class MinimumUniqueArraySum {
 		Collections.sort(list);
 		int len = list.size();
 		int elem = list.get(0);
-		int incre = 0;
 		for (int i = 1; i < len; i++) {
 			curr = list.get(i);
 			if (curr <= elem) {
