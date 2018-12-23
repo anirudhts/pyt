@@ -9,7 +9,7 @@ class StackDriver {
 		Scanner sc = new Scanner(System.in);
 		String[] command;
 
-		StackImpl s = new StackImpl();
+		StackLinkedList s = new StackLinkedList();
 		for (int i = sc.nextInt(); i >=0; i--) {
 			command = sc.nextLine().split(" ");
 			switch (command[0]) {
@@ -28,18 +28,90 @@ class StackDriver {
 				s.top();
 				break;
 			}
-
 		}
-
 	}
-
+}
+class Node{
+	private int data;
+	private Node next;
+	
+	Node(int data){
+		this.data = data;
+		this.next = null;
+	}
+	public int getData() {
+		return data;
+	}
+	public void setData(int data) {
+		this.data = data;
+	}
+	public Node getNext() {
+		return next;
+	}
+	public void setNext(Node next) {
+		this.next = next;
+	}
+	
 }
 
-class StackImpl {
+class StackLinkedList{
+	private Node top;
+	private int size;
+	
+	StackLinkedList(){
+		top = null;
+		size =0 ;
+	}
+	
+	public void push(int data){
+		Node newNode = new Node(data);
+		if(top == null){
+			top = newNode;
+		}else{
+			newNode.setNext(top);
+			top=newNode;
+		}
+		size++;
+	}
+	public void pop(){
+		if(size == 0){
+			return;
+		}else {
+			Node popNode = top;
+			top = popNode.getNext();
+			size--;
+		}
+	}
+	public void top() {
+		if (size == 0) {
+			System.out.println("EMPTY");
+		} else {
+			System.out.println(top.getData());
+		}
+	}
+	
+	public void inc(int indexFrom, int val){
+		if (indexFrom > size) {
+			System.out.println("WRONG INPUT");
+		} else {
+			Node iter = top;
+			int i = size;
+			while(iter!=null){
+				if(i <= indexFrom){
+					iter.setData(iter.getData() + val);
+				}
+				iter = iter.getNext();
+				i--;
+			}
+		}
+	}
+}
+
+class StackArrayListImpl {
 
 	private List<Integer> stack;
 
-	StackImpl() {
+	StackArrayListImpl() {
 		stack = new ArrayList<Integer>();
 	}
 
