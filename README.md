@@ -1,4 +1,4 @@
-# pyt
+# pickyourtrail
 Solutions to the problems : 
 Question 1 - MinimumUniqueArraySum.java 
 
